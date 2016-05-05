@@ -1,4 +1,4 @@
-package com.company.graph;
+package company.goo.graph;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,7 +43,6 @@ public class Graph {
         return false;
     }
 
-    public bfs()
     public void dfs()
     {
         for(Vertex v :vertices.values())

@@ -1,4 +1,4 @@
-package com.company.graph;
+package company.goo.graph;
 
 import java.util.HashSet;
 import java.util.Set;

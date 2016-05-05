@@ -1,6 +1,6 @@
-package com.company;
+package company.goo;
 
-import com.company.graph.Graph;
+import company.goo.graph.Graph;
 
 import java.util.*;
 
