@@ -1,0 +1,47 @@
+1. Favour Composition over Inheritence
+2. Encapsulate What Varies.
+3. Program to interfaces, not implementations
+
+Use Strategy:
+Different behaviours/Algos determine your subject.
+
+Use Observer:
+Publisher Subscriber Model.
+One to many relationships.
+
+Use Singleton:
+thread pools, cache,logging etc.
+Why not global variables instead of Singleton?
+Singleton only when needed creates object, with global variables you might end up intializing but never using it.
+Using synchronization for multi-threading. It's expensive.
+Can declare the static singleton in the class itself instead of constructor(This makes JVm to take care of multithreading)
+Use double checked locking.
+If any variable is declared volatile, any thread writes/reads is immediately flushed to main memory and other thread can see it.
+Lets say in case we have not volatile, now thread 1 is at first line and thread 2 is initializing,
+now thread 1 cannot see initialization and will need to enter the synchronized block , if the variable is volatile
+it will immediately see and return the newly created object.
+
+Also lets say thread two goes out of synchronized block but didnt write to main memory, now thread 1 see's it local cache
+and finds its still null.
+
+
+Use Decorators:
+
+While comparing two designs:
+Think of change in any thing, add, remove and loose coupling, independence etc.
+
+Object Pool:
+Reuse and share objects that are expensive to create. This class is singleton always.
+Example: A warehouse, employee gets hired => gets stuff from warehouse object pool and returns once he exits company.
+The Factory Method pattern can be used to encapsulate the creation logic for objects.
+However, it does not manage them after their creation, the object pool pattern keeps track of the objects it creates.
+1. Limited number of resources in the pool
+2. Handling situations when creating a new resource fails
+3. Synchronization:
+-    getInstance should be synchronized or should contain a synchronized block. For details check the singleton multithreading implementation.
+-    acquireConnectionImpl - this method returns a resource and should be synchronized not to return the same resource
+                             to two different clients running tin different threads.
+-    releaseConnectionImpl - this method release a resource. Usually it doesn't have to be synchronized
+                             a resource is allocated only by one client.
+                             Internally some blocks might need to be synchronized(depending on the method
+                             implementation and the internal structures used to keep the pool.).
